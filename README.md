@@ -126,7 +126,7 @@ The site currently highlights several initiatives with their own dedicated pages
 
 - Roosevelt Connect - a current project page focused on its own mission and presentation.
 - Intelligrader - an AP History FRQ scoring tool with its own product-style landing page.
-- Virtual Medical Missions - a past project page centered on outreach, operations, and support infrastructure.
+- Virtual Medical Missions - a planned project page centered on outreach, operations, and support infrastructure.
 
 The projects page and navigation also separate current and past work so visitors can understand what the organization is actively building versus what has already been completed.
 
