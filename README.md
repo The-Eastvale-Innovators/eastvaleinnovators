@@ -206,7 +206,7 @@ Configuration lives in `vercel.json`:
 
 ### Custom domain
 
-The custom domain (`www.eastvaleinnovators.org`) is configured in the **Vercel dashboard** under the project’s Domains settings, not via a `CNAME` file. Point the domain’s DNS at Vercel and add it in the dashboard; Vercel provisions the TLS certificate automatically.
+The custom domain (`www.eastvaleinnovators.club`) is configured in the **Vercel dashboard** under the project’s Domains settings, not via a `CNAME` file. Point the domain’s DNS at Vercel and add it in the dashboard; Vercel provisions the TLS certificate automatically.
 
 ## Why This Site Exists
 

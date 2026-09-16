@@ -180,7 +180,7 @@ registerPageColors({ accent:'#c84b0a', accentHot:'#e8721a', bg:'#060f1e' });
         <div class="info-card">
           <div class="info-card-label">Email</div>
           <div class="info-card-value">
-            <a href="mailto:info@eastvaleinnovators.org">info@eastvaleinnovators.org</a>
+            <a href="mailto:info@eastvaleinnovators.club">info@eastvaleinnovators.club</a>
           </div>
         </div>
         <div class="info-card">
@@ -248,9 +248,9 @@ document.getElementById('contact-form')?.addEventListener('submit', function(e) 
   const topic = document.getElementById('topic').value;
   const message = document.getElementById('message').value.trim();
   const subject = `[${topic}] Message from ${name}`;
-  const body = [`Name: ${name}`, `Email: ${email}`, '', 'Message:', message, '', 'Sent from eastvaleinnovators.org/contact'].join('\n');
-  window.location.href = `mailto:info@eastvaleinnovators.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  document.getElementById('form-status').textContent = 'Your email draft is ready. If it didn\'t open, email us directly at info@eastvaleinnovators.org.';
+  const body = [`Name: ${name}`, `Email: ${email}`, '', 'Message:', message, '', 'Sent from eastvaleinnovators.club/contact'].join('\n');
+  window.location.href = `mailto:info@eastvaleinnovators.club?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  document.getElementById('form-status').textContent = 'Your email draft is ready. If it didn\'t open, email us directly at info@eastvaleinnovators.club.';
   document.getElementById('form-status').className = 'form-status success';
   this.reset();
 });
