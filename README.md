@@ -44,12 +44,18 @@ The site is intentionally broad in scope. It is not just a project showcase; it 
 └── .vercelignore                       # files excluded from the Vercel deploy
 ```
 
-Folder names become URL segments thanks to clean URLs: `projects/index.html`
-serves at `/projects`, and `about/teams.html` serves at `/about/teams`. All
-internal links, asset references, and partial fetches use root-absolute paths
-(`/assets/...`, `/partials/...`), so pages work regardless of how deeply they
-are nested. When a page moves, add a redirect in `vercel.json` so old links keep
-resolving (see the existing entries there for the pattern).
+Folder names become URL segments: `projects/index.html` serves at `/projects`
+and `about/teams.html` serves at `/about/teams`. All internal links, asset
+references, and partial fetches use root-absolute paths (`/assets/...`,
+`/partials/...`, `/about/teams.html`), so pages work regardless of how deeply
+they are nested.
+
+Internal page links point at the real files (`/about/teams.html`, `/projects/`)
+so navigation works on any static server or local preview, not just Vercel. In
+production, `cleanUrls` transparently redirects those to the extensionless form
+(`/about/teams`), so visitors still see clean URLs. When a page moves, add a
+redirect in `vercel.json` so old links keep resolving (see the existing entries
+there for the pattern).
 
 ## Shared Architecture
 
