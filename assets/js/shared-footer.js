@@ -52,7 +52,7 @@
         const link = document.createElement('link');
         link.id = stylesheetId;
         link.rel = 'stylesheet';
-        link.href = `assets/css/shared-footer.css?v=${SHARED_FOOTER_VERSION}`;
+        link.href = `/assets/css/shared-footer.css?v=${SHARED_FOOTER_VERSION}`;
         document.head.appendChild(link);
     }
 
@@ -62,7 +62,7 @@
         }
 
         try {
-            const response = await fetch(`partials/footer.html?v=${SHARED_FOOTER_VERSION}`, { cache: 'no-store' });
+            const response = await fetch(`/partials/footer.html?v=${SHARED_FOOTER_VERSION}`, { cache: 'no-store' });
             if (!response.ok) {
                 throw new Error('Failed to load shared footer.');
             }

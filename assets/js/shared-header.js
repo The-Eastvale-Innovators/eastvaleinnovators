@@ -4,7 +4,7 @@
     const link = document.createElement('link');
     link.id = 'ei-shared-header-styles';
     link.rel = 'stylesheet';
-    link.href = 'assets/css/shared-header.css';
+    link.href = '/assets/css/shared-header.css';
     document.head.appendChild(link);
   }
 
@@ -13,7 +13,7 @@
     if (!mount) return;
     ensureSharedHeaderStylesheet();
     try {
-      const res = await fetch('partials/header.html', { cache: 'no-cache' });
+      const res = await fetch('/partials/header.html', { cache: 'no-cache' });
       if (!res.ok) throw new Error('Failed to load shared header.');
       mount.innerHTML = await res.text();
 

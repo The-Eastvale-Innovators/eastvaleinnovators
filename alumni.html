@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Eastvale Innovators Alumni — the people who built this.">
   <title>Alumni — Eastvale Innovators</title>
-  <link rel="icon" type="image/png" href="assets/img/logo_favicon.png">
+  <link rel="icon" type="image/png" href="/assets/img/logo_favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -619,10 +619,10 @@
 <body>
 
 <div id="site-header"></div>
-<script src="assets/js/shared-header.js"></script>
-<script src="assets/js/shared-footer.js?v=4-17-26"></script>
-<script src="assets/js/site-common.js"></script>
-<script src="assets/js/color-transition.js"></script>
+<script src="/assets/js/shared-header.js"></script>
+<script src="/assets/js/shared-footer.js?v=4-17-26"></script>
+<script src="/assets/js/site-common.js"></script>
+<script src="/assets/js/color-transition.js"></script>
 <script>
   loadSharedHeader('#site-header');
   loadSharedFooter('#site-footer');
@@ -664,7 +664,7 @@
 <div class="divider"></div>
 <section style="padding:5rem 2rem;text-align:center">
   <p style="color:var(--muted);font-size:1rem;max-width:480px;margin:0 auto 2rem">This wall misses people. If you're an alum and want your card up here, want to fix what yours says, or just want to say hi — the door never closed.</p>
-  <a href="contact.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;background:linear-gradient(135deg,#c84b0a,#a33a06);color:#fff;text-decoration:none;border-radius:12px;font-weight:700;font-size:.9rem;box-shadow:0 8px 28px rgba(200,75,10,.4);transition:transform .2s,box-shadow .2s">Write to Us →</a>
+  <a href="/contact" style="display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;background:linear-gradient(135deg,#c84b0a,#a33a06);color:#fff;text-decoration:none;border-radius:12px;font-weight:700;font-size:.9rem;box-shadow:0 8px 28px rgba(200,75,10,.4);transition:transform .2s,box-shadow .2s">Write to Us →</a>
 </section>
 
 <!-- MODAL: unfolds into a giant alumni "letter", tri-folded like paper -->
@@ -808,7 +808,7 @@ const ALUMNI = [
     year: "2026",
     teams: ["Your Team"],
     theme: "slate", pin: "teal", rot: 2, tape: false,
-    image: "assets/img/alumni/your-name.jpg",
+    image: "/assets/img/alumni/your-name.jpg",
     bioLong: "The long version, for the opened letter — where you went, what you built, what you want the underclassmen to know.",
     quote: "Something you'd actually want on your own letter.",
     stickers: ["🎓", { emoji: "✨", top: "70%", left: "80%", rot: -8 }]
@@ -874,7 +874,7 @@ const thankYouNote = makeDecor(`
 const clubPolaroid = makeDecor(`
   <div class="card-pin pin-red"></div>
   <div class="polaroid-frame">
-    <img src="assets/img/logo_favicon.png" alt="">
+    <img src="/assets/img/logo_favicon.png" alt="">
     <div class="polaroid-caption">the club that builds ⚡</div>
   </div>`, -5);
 // Tuck them into the flow of the board

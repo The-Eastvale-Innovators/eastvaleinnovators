@@ -21,17 +21,31 @@ The site is intentionally broad in scope. It is not just a project showcase; it 
 - A leadership page for organizational leadership and structure.
 - A contact page for outreach, partnerships, and general communication.
 
-## Site Map
+## Repository Layout
 
-- `index.html` - homepage and organization overview
-- `projects.html` - consolidated project gallery and discovery page
-- `leadership.html` - leadership and organizational roles
-- `teams.html` - team directory and team-specific anchors
-- `contact.html` - contact and outreach page
-- `roosevelt-connect.html` - Roosevelt Connect project page
-- `intelligrader.html` - Intelligrader project page
-- `virtual-medical-missions.html` - Virtual Medical Missions project page
-- `project-template.html` - base template for adding new project pages
+```
+.
+├── index.html                     # homepage and organization overview
+├── projects.html                  # consolidated project gallery
+├── teams.html                     # team directory and team-specific anchors
+├── leadership.html                # leadership and organizational roles
+├── contact.html                   # contact and outreach page
+├── alumni.html                    # alumni page
+├── roosevelt-connect.html         # Roosevelt Connect project page
+├── intelligrader.html             # Intelligrader project page
+├── virtual-medical-missions.html  # Virtual Medical Missions project page
+├── phage-hunters.html             # Phage Hunters project page
+├── partials/                      # shared header + footer markup (fetched at runtime)
+├── assets/                        # css, js, img, models (see "Assets And Content")
+├── _templates/                    # scaffolds, e.g. project-template.html (not deployed)
+├── vercel.json                    # Vercel hosting config (clean URLs, headers)
+└── .vercelignore                  # files excluded from the Vercel deploy
+```
+
+Pages live at the repository root so each maps directly to a clean route
+(`teams.html` → `/teams`). All internal links, asset references, and partial
+fetches use root-absolute paths (`/assets/...`, `/partials/...`), so pages are
+never sensitive to the folder they are opened from.
 
 ## Shared Architecture
 
@@ -108,12 +122,12 @@ The projects page and navigation also separate current and past work so visitors
 
 ## Assets And Content
 
-- `assets/img/` contains the visual assets used across the site, including banners, backgrounds, logos, and project imagery.
-- `assets/models/` contains model assets used on pages that need them.
-- `assets/sfx/` stores sound assets where applicable.
-- `assets/css/` and `assets/js/` contain shared site logic and shared styles.
+- `assets/img/` contains the visual assets used across the site, including logos, portraits, and project imagery. `placeholder.jpg` is the fallback portrait used where a real image is not yet available.
+- `assets/models/` contains 3D model assets (`gear.obj`) loaded on the homepage.
+- `assets/css/` holds the shared styles: `pages.css`, `shared-header.css`, and `shared-footer.css`.
+- `assets/js/` holds the shared behavior: the header/footer loaders, `site-common.js`, and `color-transition.js`.
 
-When adding new content, keep assets organized by type and reuse existing visual patterns where possible.
+When adding new content, keep assets organized by type and reuse existing visual patterns where possible. Remove assets that are no longer referenced rather than letting them accumulate.
 
 ## Content Conventions
 
@@ -125,12 +139,16 @@ When adding new content, keep assets organized by type and reuse existing visual
 
 ## Local Development
 
-This is a static site, so it can be previewed directly in a browser. For a more reliable local workflow, serve the repository with a simple static server so relative paths, partial loading, and page navigation behave the same way they do online.
+This is a static site, but it must be served over HTTP — the header and footer are fetched at runtime with `fetch()` using root-absolute paths, which do not work from `file://`. Always serve from the repository root so `/partials/...` and `/assets/...` resolve correctly.
 
-Example:
+Either of these works:
 
 ```bash
+# Plain static server (Python)
 python -m http.server
+
+# Vercel CLI — mirrors production, including clean URLs and headers
+npx vercel dev
 ```
 
 Then open the local address printed in the terminal.
@@ -139,7 +157,7 @@ If you are working on the shared header, footer, or JavaScript loaders, refresh 
 
 ## How To Add A New Page
 
-1. Start from `project-template.html` if the new page is a project page.
+1. Copy `_templates/project-template.html` to the repository root and rename it if the new page is a project page.
 2. Update the page metadata, title, and canonical URL.
 3. Reuse the shared header and footer partials.
 4. Add any page-specific assets under `assets/`.
@@ -166,9 +184,19 @@ When making a site-wide change, verify the following:
 
 ## Deployment
 
-The repository is configured for GitHub Pages hosting under `eastvale-innovators.github.io`.
+The site is hosted on **Vercel**. There is no build step — Vercel serves the repository’s HTML, CSS, JavaScript, and asset files directly. Every push to the production branch triggers an automatic deploy, and pull requests get their own preview URLs.
 
-There is no build step. The site is published directly from the repository’s HTML, CSS, JavaScript, and asset files.
+Configuration lives in `vercel.json`:
+
+- `cleanUrls` serves pages without the `.html` extension (`/teams` instead of `/teams.html`) and redirects the old extension to the clean path.
+- `trailingSlash` is disabled for consistent, canonical URLs.
+- Security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`) are applied to every response.
+
+`.vercelignore` keeps scaffolding (`_templates/`) and this README out of the deployed output.
+
+### Custom domain
+
+The custom domain (`www.eastvaleinnovators.org`) is configured in the **Vercel dashboard** under the project’s Domains settings, not via a `CNAME` file. Point the domain’s DNS at Vercel and add it in the dashboard; Vercel provisions the TLS certificate automatically.
 
 ## Why This Site Exists
 

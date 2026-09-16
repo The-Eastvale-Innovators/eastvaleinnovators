@@ -1,5 +1,12 @@
+# OS junk
+.DS_Store
+**/.DS_Store
+
+# Local scratch pages (never committed)
 test.html
 placeholder.html
 assemble.html
 
+# Tooling
 .nimbalyst/
+.vercel/
