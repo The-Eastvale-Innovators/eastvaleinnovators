@@ -2,6 +2,23 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/projects.html", "destination": "/projects", "permanent": true },
+    { "source": "/roosevelt-connect", "destination": "/projects/roosevelt-connect", "permanent": true },
+    { "source": "/roosevelt-connect.html", "destination": "/projects/roosevelt-connect", "permanent": true },
+    { "source": "/intelligrader", "destination": "/projects/intelligrader", "permanent": true },
+    { "source": "/intelligrader.html", "destination": "/projects/intelligrader", "permanent": true },
+    { "source": "/virtual-medical-missions", "destination": "/projects/virtual-medical-missions", "permanent": true },
+    { "source": "/virtual-medical-missions.html", "destination": "/projects/virtual-medical-missions", "permanent": true },
+    { "source": "/phage-hunters", "destination": "/projects/phage-hunters", "permanent": true },
+    { "source": "/phage-hunters.html", "destination": "/projects/phage-hunters", "permanent": true },
+    { "source": "/teams", "destination": "/about/teams", "permanent": true },
+    { "source": "/teams.html", "destination": "/about/teams", "permanent": true },
+    { "source": "/leadership", "destination": "/about/leadership", "permanent": true },
+    { "source": "/leadership.html", "destination": "/about/leadership", "permanent": true },
+    { "source": "/alumni", "destination": "/about/alumni", "permanent": true },
+    { "source": "/alumni.html", "destination": "/about/alumni", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/assets/img/(.*)",

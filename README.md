@@ -25,27 +25,31 @@ The site is intentionally broad in scope. It is not just a project showcase; it 
 
 ```
 .
-├── index.html                     # homepage and organization overview
-├── projects.html                  # consolidated project gallery
-├── teams.html                     # team directory and team-specific anchors
-├── leadership.html                # leadership and organizational roles
-├── contact.html                   # contact and outreach page
-├── alumni.html                    # alumni page
-├── roosevelt-connect.html         # Roosevelt Connect project page
-├── intelligrader.html             # Intelligrader project page
-├── virtual-medical-missions.html  # Virtual Medical Missions project page
-├── phage-hunters.html             # Phage Hunters project page
-├── partials/                      # shared header + footer markup (fetched at runtime)
-├── assets/                        # css, js, img, models (see "Assets And Content")
-├── _templates/                    # scaffolds, e.g. project-template.html (not deployed)
-├── vercel.json                    # Vercel hosting config (clean URLs, headers)
-└── .vercelignore                  # files excluded from the Vercel deploy
+├── index.html                          # /          homepage and organization overview
+├── contact.html                        # /contact   contact and outreach page
+├── projects/
+│   ├── index.html                      # /projects                       project gallery
+│   ├── roosevelt-connect.html          # /projects/roosevelt-connect
+│   ├── intelligrader.html              # /projects/intelligrader
+│   ├── virtual-medical-missions.html   # /projects/virtual-medical-missions
+│   └── phage-hunters.html              # /projects/phage-hunters
+├── about/
+│   ├── teams.html                      # /about/teams        team directory (with anchors)
+│   ├── leadership.html                 # /about/leadership   leadership and roles
+│   └── alumni.html                     # /about/alumni       alumni page
+├── partials/                           # shared header + footer markup (fetched at runtime)
+├── assets/                             # css, js, img, models (see "Assets And Content")
+├── _templates/                         # scaffolds, e.g. project-template.html (not deployed)
+├── vercel.json                         # Vercel hosting config (clean URLs, redirects, headers)
+└── .vercelignore                       # files excluded from the Vercel deploy
 ```
 
-Pages live at the repository root so each maps directly to a clean route
-(`teams.html` → `/teams`). All internal links, asset references, and partial
-fetches use root-absolute paths (`/assets/...`, `/partials/...`), so pages are
-never sensitive to the folder they are opened from.
+Folder names become URL segments thanks to clean URLs: `projects/index.html`
+serves at `/projects`, and `about/teams.html` serves at `/about/teams`. All
+internal links, asset references, and partial fetches use root-absolute paths
+(`/assets/...`, `/partials/...`), so pages work regardless of how deeply they
+are nested. When a page moves, add a redirect in `vercel.json` so old links keep
+resolving (see the existing entries there for the pattern).
 
 ## Shared Architecture
 
@@ -157,7 +161,7 @@ If you are working on the shared header, footer, or JavaScript loaders, refresh 
 
 ## How To Add A New Page
 
-1. Copy `_templates/project-template.html` to the repository root and rename it if the new page is a project page.
+1. Copy `_templates/project-template.html` into `projects/` and rename it (e.g. `projects/my-project.html`, which serves at `/projects/my-project`).
 2. Update the page metadata, title, and canonical URL.
 3. Reuse the shared header and footer partials.
 4. Add any page-specific assets under `assets/`.
